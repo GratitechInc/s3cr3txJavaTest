@@ -8,9 +8,9 @@ public class s3cr3txJavaTest {
         HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Accept", "text/plain");
-        conn.setRequestProperty("Email", "youremail@yourdomain.com");
-        conn.setRequestProperty("APIToken", "YourS3cr3txAPIToken");
-        conn.setRequestProperty("AuthCode", "Yours3cr3txAuthCode");
+        conn.setRequestProperty("Email", System.getenv("s3cr3tx_Email"));
+        conn.setRequestProperty("APIToken", System.getenv("s3cr3tx_APIToken"));
+        conn.setRequestProperty("AuthCode", System.getenv("s3cr3tx_AuthCode"));
         conn.setRequestProperty("Input", "This is some s3cr3t Text.");
         conn.setRequestProperty("EorD", "e");
 
