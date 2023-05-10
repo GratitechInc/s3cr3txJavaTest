@@ -34,9 +34,9 @@ public class s3cr3txJavaTest {
         HttpsURLConnection conn2 = (HttpsURLConnection) url.openConnection();
         conn2.setRequestMethod("GET");
         conn2.setRequestProperty("Accept", "text/plain");
-        conn2.setRequestProperty("Email", "youremail@yourdomain.com");
-        conn2.setRequestProperty("APIToken", "YourS3cr3txAPIToken");
-        conn2.setRequestProperty("AuthCode", "Yours3cr3txAuthCode");
+        conn2.setRequestProperty("Email", System.getenv("s3cr3tx_Email"));
+        conn2.setRequestProperty("APIToken", System.getenv("s3cr3tx_APIToken"));
+        conn2.setRequestProperty("AuthCode", System.getenv("s3cr3tx_AuthCode"));
         conn2.setRequestProperty("Input", strResult);
         conn2.setRequestProperty("EorD", "d");
         System.out.println("\nSending 'GET' request to URL: " + website);
