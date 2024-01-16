@@ -1,3 +1,4 @@
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 import java.net.*;
 import javax.net.ssl.HttpsURLConnection;
@@ -20,7 +21,7 @@ public class s3cr3txJavaTest {
         String strResult = new String();
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String line = "";
-        while ((line = br.readLine())!= null) {
+        while ((line = BoundedLineReader.readLine(br, 5_000_000))!= null) {
             strResult += line;
         }
         System.out.println("\nS3cr3tx encrypted text is friom: " + website);
@@ -44,7 +45,7 @@ public class s3cr3txJavaTest {
         String strResult2 = new String();
         BufferedReader br2 = new BufferedReader(new InputStreamReader(conn2.getInputStream()));
         String line2 = "";
-        while ((line2 = br2.readLine())!= null) {
+        while ((line2 = BoundedLineReader.readLine(br2, 5_000_000))!= null) {
             strResult2 += line2;
         }
         System.out.println("\nS3cr3tx decrypted text from: " + website);
