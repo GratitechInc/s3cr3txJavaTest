@@ -1,3 +1,5 @@
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.*;
 import java.net.*;
 import javax.net.ssl.HttpsURLConnection;
@@ -9,7 +11,7 @@ public class s3cr3txJava_protect_OpenAI_API_demo {
     public static String getS3cr3tx(String strInput){
         URL s3cr3tx_url;
         try {
-            s3cr3tx_url = new URL(System.getenv("s3cr3tx_API_URL"));
+            s3cr3tx_url = Urls.create(System.getenv("s3cr3tx_API_URL"), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         HttpsURLConnection conn = (HttpsURLConnection)s3cr3tx_url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Accept", "text/plain");
@@ -40,7 +42,7 @@ public class s3cr3txJava_protect_OpenAI_API_demo {
     }
     public static String setS3cr3tx(String strInput){
         try {
-        URL s3cr3tx_url = new URL(System.getenv("s3cr3tx_API_URL"));
+        URL s3cr3tx_url = Urls.create(System.getenv("s3cr3tx_API_URL"), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         HttpsURLConnection conn = (HttpsURLConnection) s3cr3tx_url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Accept", "text/plain");
