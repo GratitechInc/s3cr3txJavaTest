@@ -1,10 +1,12 @@
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.*;
 import java.net.*;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.HttpsURLConnection.*;
 public class s3cr3txJavaTest {
     public static void getHTML(String website) throws Exception {
-        URL url = new URL(website);
+        URL url = Urls.create(website, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Accept", "text/plain");
