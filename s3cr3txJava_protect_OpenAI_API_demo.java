@@ -1,3 +1,4 @@
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 import java.net.*;
 import javax.net.ssl.HttpsURLConnection;
@@ -24,7 +25,7 @@ public class s3cr3txJava_protect_OpenAI_API_demo {
         String strResult = new String();
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String line = "";
-        while ((line = br.readLine())!= null) {
+        while ((line = BoundedLineReader.readLine(br, 5_000_000))!= null) {
             strResult += line;
         }
         return strResult;
@@ -55,7 +56,7 @@ public class s3cr3txJava_protect_OpenAI_API_demo {
         String strResult = new String();
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String line = "";
-        while ((line = br.readLine())!= null) {
+        while ((line = BoundedLineReader.readLine(br, 5_000_000))!= null) {
             strResult += line;
         }
         return strResult;
@@ -82,7 +83,7 @@ public class s3cr3txJava_protect_OpenAI_API_demo {
         String strResult = new String();
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String line = "";
-        while ((line = br.readLine())!= null) {
+        while ((line = BoundedLineReader.readLine(br, 5_000_000))!= null) {
             strResult += line;
         }
         System.out.println("\n" + strResult);
@@ -97,7 +98,7 @@ public class s3cr3txJava_protect_OpenAI_API_demo {
         String strResult2 = new String();
         BufferedReader br2 = new BufferedReader(new InputStreamReader(conn2.getInputStream()));
         String lines = "";
-        while ((lines = br2.readLine())!= null) {
+        while ((lines = BoundedLineReader.readLine(br2, 5_000_000))!= null) {
             strResult2 += lines;
         }
         System.out.println("\n" + strResult2);
